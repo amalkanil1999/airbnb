@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useRef} from "react";
 import { styled } from "styled-components";
 
 function SignUp(props) {
@@ -47,6 +47,7 @@ const PopupContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000 !important;
 `;
 
 const Popupdiv = styled.div`
