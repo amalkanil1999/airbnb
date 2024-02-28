@@ -2,22 +2,27 @@ import React,{useState} from "react";
 import Vectors from "./lists/Vectors";
 import styled from "styled-components";
 import Tick from "../../assets/icons/tick-svgrepo-com.svg"
+import { NavLink } from "react-router-dom";
+import FilterPop from "./popup/FilterPop";
 
 function Main() {
   const [toggled, setToggled] = useState(false);
-
+  const [openPopup, setopenPopup] = useState(false);
   const handleToggle = () => {
     setToggled(!toggled);
   };
   return (
+    
     <Wrapper>
       <FlexWrapper>
+      <BonusWrapper>
         <MainC>
           <Top>
             <Slidercont>
               <Vectors />
             </Slidercont>
-            <FilterDiv>
+            <LeftDiv>
+            <FilterDiv onClick={()=>setopenPopup(true)}>
               <Filterimg
                 src={
                   require("../../assets/icons/filter-horizontal-svgrepo-com.svg")
@@ -34,41 +39,65 @@ function Main() {
               >
                 <Thumb className="thumb" />
               </ToggleBtn>
-            </PopupButton>
+              </PopupButton>
+              </LeftDiv>
           </Top>
         </MainC>
+        <Bottom>
+          </Bottom>
+          </BonusWrapper>
       </FlexWrapper>
-    </Wrapper>
+      <FilterPop trigger={openPopup} setTrigger={setopenPopup}>
+              </FilterPop>
+      </Wrapper>
+      
   );
 }
+const BonusWrapper = styled.section`
+width: 90%;
+margin: 0 auto;
+`;
+
 const Wrapper = styled.section`
-  border-top: 1px solid #a9a9a9;
-  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  
+  /* box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); */
 `;
 const FlexWrapper = styled.section`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  /* position: fixed;
+  top:170px;
+  left:0px; */
+  background-color: #fff;
+  border-top: 1px solid #a9a9a9;
 `;
 const Slidercont = styled.section`
   width: 70%;
-  z-index: 0;
+  
 `;
-const FilterDiv = styled.section`
+const FilterDiv = styled(NavLink)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid #e0e0e0;
-height: 50px;
-padding: 0 10px ;  
-border-radius: 16px;
+  width: 20%;
+  height: 50px;
+  padding: 0 10px ;  
+  border-radius: 16px;
+  text-decoration: none;
+  color: #000;
   `;
-const MainC = styled.section``;
+const MainC = styled.section`
+padding-top: 20px;
+
+`;
 const PopupButton = styled.section`
 display: flex;
 align-items: center;
 justify-content: space-between;
 border: 1px solid #e0e0e0;
 height: 50px;
+width: 60%;
 padding: 0 10px ;  
 border-radius: 16px;
 `;
@@ -125,8 +154,17 @@ const Thumb = styled.div`
 const Filter = styled.h5`
 font-weight: 500;
 font-size: 13px;
+
 `;
-// const PopupButton = styled.section``;
-// const Filterimg = styled.section``;
+const LeftDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  margin-left: 50px;
+`;
+const Bottom = styled.section`
+/* height: 800px; */
+`;
 
 export default Main;

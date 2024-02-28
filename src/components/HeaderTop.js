@@ -17,6 +17,8 @@ function HeaderTop() {
     setCheckButtonsVisible((prev) => !prev);
   };
   return (
+
+    <BonusWrapper>
     <MainWrapper>
     <Wrapper>
       <MainC>
@@ -125,20 +127,28 @@ function HeaderTop() {
         </Curve>
       </Bottom>
       </Wrapper>
+      
+      </MainWrapper>
       <Popup trigger={openPopup} setTrigger={setopenPopup}></Popup>
-    </MainWrapper>
-    
+      </BonusWrapper>
   );
 }
+const BonusWrapper = styled.section`
+background-color: #fff;
+position: sticky;
+top: 0;
+z-index: 10;
+`;
+
 const MainWrapper = styled.section`
 width: 90%;
 margin: 0 auto;
-max-width: 1380px;
+
+
 `;
 const Wrapper = styled.section`
   padding: 0 0 20px 0;
-  position: sticky;
-  top: 0;
+ 
 `;
 const MainC = styled.nav`
   display: flex;

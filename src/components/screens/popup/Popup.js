@@ -44,6 +44,7 @@ const PopupContainer = styled.div`
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 18%;
+  z-index: 1000 !important;
 `;
 
 const Popupdiv = styled.div`

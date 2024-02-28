@@ -23,7 +23,7 @@ function SignUp(props) {
               <Input type="text" placeholder="Username" />
               <Input type="email" placeholder="Email" />
               <Input type="password" placeholder="Password" />
-              <SignupButton>Continue</SignupButton>
+              <SignupButton onClick={() => props.setTrigger(false)}>Continue</SignupButton>
             </InputCompo>
           </Content>
         </Popupdiv>

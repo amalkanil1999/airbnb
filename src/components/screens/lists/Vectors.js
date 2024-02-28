@@ -143,6 +143,21 @@ function Vectors() {
         </ArrowmDiv>
       </div>
     ),
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3,
+        }
+       },
+      {
+        breakpoint: 1024,
+        settings: {
+         slidesToShow: 6,
+        }
+      }
+    ]
   };
 
   return (

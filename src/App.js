@@ -6,6 +6,7 @@ import './App.css';
 import Main from './components/screens/Main';
 import Experiances from './components/screens/Experiances';
 import HeaderTop from './components/HeaderTop';
+import Cards from './components/screens/lists/Cards';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Router>
         <HeaderTop />
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Cards />} />
           <Route path='experiences' element={<Experiances />} />
           </Routes>
       </Router>
