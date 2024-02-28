@@ -60,29 +60,17 @@ const SnavLink = styled(NavLink)`
 &:hover {
     background-color: #E0E0E0!important;
   }
-  padding:0 0 0 10px;
   display:block;
   text-decoration: none;
-  height: 40px;
-  margin: auto 0;
+  padding: 10px ;
+  
 `;
 
 const H1 = styled.h1`
-  font-size: 16px;
-  font-weight: 350;
+  font-size: 14px;
+  font-weight: 200;
   color: #000;
-  margin: auto 0;
 `;
-
 const HR = styled.hr``;
-
-const Closebutton = styled.button`
-  font-size: 8px;
-  border: 1px solid #000;
-  height: 30px;
-  width: 30px;
-  margin: auto auto;
-  border-radius: 6px;
-`;
 
 export default Popup;

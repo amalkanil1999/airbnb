@@ -47,7 +47,6 @@ const PopupContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000 !important;
 `;
 
 const Popupdiv = styled.div`
@@ -60,15 +59,16 @@ const Popupdiv = styled.div`
 
 const H3 = styled.h3`
   font-size: 24px;
-  margin-bottom: 20px;
   text-align: center;
   margin-left: 10%;
+  color: #000;
 `;
 
 const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 20px;
 `;
 
 const Content = styled.div`
@@ -80,8 +80,10 @@ const InputCompo = styled.div`
 `;
 
 const H5 = styled.h5`
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000;
 `;
 
 const Input = styled.input`

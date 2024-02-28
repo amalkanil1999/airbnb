@@ -21,7 +21,8 @@ function HeaderTop() {
     <BonusWrapper>
     <MainWrapper>
     <Wrapper>
-      <MainC>
+          <MainC>
+            <H1container>
         <H1>
           <LinkA>
             <Logo
@@ -29,7 +30,8 @@ function HeaderTop() {
               alt="airbnb"
             />
           </LinkA>
-        </H1>
+              </H1>
+              </H1container>
         <Middle>
           <SnavLink
             to="/"
@@ -69,7 +71,6 @@ function HeaderTop() {
               />
             </GlobeIcon>
           </LinkIcon>
-
           <SignButton onClick={() => setopenPopup(true)}>
             <HamDiv>
               <Hamburger
@@ -108,10 +109,10 @@ function HeaderTop() {
               </CheckButton>
             </>
           ) : (
-            <CheckButton>
+            <CheckButtonPop>
               <Dates>Another Check</Dates>
               <InputDate type="date" placeholder="Add dates" />
-            </CheckButton>
+            </CheckButtonPop>
           )}
           <GuestButton>
             <Left>
@@ -147,31 +148,35 @@ margin: 0 auto;
 
 `;
 const Wrapper = styled.section`
-  padding: 0 0 20px 0;
+  padding: 20px 0;
  
 `;
 const MainC = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 `;
+const H1container = styled.div`
+width: 20%;`;
+
 const H1 = styled.h1`
   width: 100px;
 `;
-const LinkA = styled(Link)``;
+const LinkA = styled(Link)`
+`;
 const Middle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 40%;
 `;
 const SnavLinkButton = styled.button`
   &:hover {
     background-color: ${(props) =>
       props.isActive ? "#fff" : "#e0e0e0"};
   }
-  margin-top: 5px;
-  padding: 0 15px;
-  border: none;
+  padding: 6px 12px;
   border-radius: 40px;
   background-color: ${(props) => (props.isActive ? "#fff" : "transparent")};
 `;
@@ -180,7 +185,7 @@ const SnavLink = styled(NavLink)`
     background-color: ${(props) => (props.isActive ? "#fff" : "#e0e0e0")};
     border-radius: 40px;
   }
-  padding: 0 15px;
+  padding: 6px 12px;
   color: grey;
   text-decoration: none;
   background-color: ${(props) => (props.isActive ? "#fff" : "transparent")};
@@ -188,34 +193,38 @@ const SnavLink = styled(NavLink)`
 
 `;
 const Para = styled.h3`
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
+  margin: 4px;
   color: ${(props) => (props.isActive ? "grey" : "#000")};
 `;
 const ParaH = styled.h3`
   font-size: 16px;
   font-weight: 400;
+  margin: 4px;
 `;
 const Right = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  width: 20%;
 `;
 const Logo = styled.img`
   width: 100%;
   display: block;
 `;
 const Span = styled.h4`
-  font-size: 16px;
+  font-size: 13px;
   color: #000;
-  font-weight: 400;
+  font-weight: 550;
+  margin: 8px;
+  white-space: nowrap;
 `;
 const LinkIcon = styled(Link)`
   &:hover {
     background-color: #e0e0e0;
     border-radius: 40px;
   }
-  padding: 0 15px;
   text-decoration: none;
 `;
 const GlobeIcon = styled.div`
@@ -238,6 +247,7 @@ const SignButton = styled(NavLink)`
   border: 1px solid grey;
   padding: 5px;
   border-radius: 28px;
+  margin-left: 10px;
 `;
 const HamDiv = styled.div`
   width: 15px;
@@ -248,6 +258,7 @@ const Hamburger = styled.img`
 `;
 const UserDiv = styled.div`
   width: 20px;
+  
 `;
 const UserIcon = styled.img`
   width: 100%;
@@ -255,19 +266,21 @@ const UserIcon = styled.img`
 `;
 
 const Bottom = styled.div`
-  width: 55%;
-  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const Curve = styled.div`
   display: flex;
+  justify-content: space-between;
   border: 1px solid #e8e8e8;
   border-radius: 40px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 60%;
 `;
 const DestinationButton = styled.div`
-  width: 50%;
-  padding: 2%;
-
+  width: 30%;
+  padding: 10px 20px;
   &:hover {
     background-color: #e0e0e0;
     border-radius: 40px;
@@ -275,56 +288,63 @@ const DestinationButton = styled.div`
 `;
 
 const Inputdestination = styled.input`
-  border: none;
-  outline: none;
+  font-size: 15px;
+  font-weight: 500;
   ${DestinationButton}:hover & {
     background-color: #e0e0e0;
   }
 `;
 
 const CheckButton = styled.div`
-  width: 25%;
-  padding: 2%;
+  width: 20%;
+  padding: 10px 20px;
+  &:hover {
+    background-color: #e0e0e0;
+    border-radius: 40px;
+  }
+`;
+const CheckButtonPop = styled.div`
+  width: 40%;
+  padding: 10px 20px;
   &:hover {
     background-color: #e0e0e0;
     border-radius: 40px;
   }
 `;
 const Dates = styled.p`
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 550;
+  color: #000;
 `;
 const InputDate = styled.input`
-  border: none;
-  outline: none;
-
+  font-size:15px;
   ${CheckButton}:hover & {
     background-color: #e0e0e0;
   }
 `;
 const GuestButton = styled.div`
-  width: 50%;
+  width: 30%;
+  padding: 10px 5px 10px 20px; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2%;
   &:hover {
     background-color: #e0e0e0;
     border-radius: 40px;
   }
 `;
-const Left = styled.div``;
+const Left = styled.div`
+width: 60%;`;
 const GuestInput = styled.input`
-  border: none;
-  outline: none;
+  font-size:15px;
+  font-weight: 500;
   ${GuestButton}:hover & {
     background-color: #e0e0e0;
   }
 `;
 const SearchContainer = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: red;
   padding: 8px;

@@ -11,6 +11,7 @@ function Cards() {
   const Imagecards = [
     {
       rating: "4",
+      added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image16.webp"),
@@ -24,6 +25,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "8 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image8.webp"),
@@ -37,6 +39,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image7.webp"),
@@ -50,6 +53,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image5.webp"),
@@ -63,6 +67,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "6 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image10.webp"),
@@ -76,6 +81,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "12 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require("../../../assets/image/images/image11.webp"),
@@ -89,6 +95,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "7 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image12.webp'),
@@ -102,6 +109,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "7 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image13.webp'),
@@ -115,6 +123,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "3 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image14.webp'),
@@ -128,6 +137,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image15.webp'),
@@ -141,6 +151,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image16.webp'),
@@ -154,6 +165,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "2 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image9.webp'),
@@ -167,6 +179,7 @@ function Cards() {
     },
     {
       rating: "4",
+      added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
         require('../../../assets/image/images/image8.webp'),
@@ -246,7 +259,12 @@ function Cards() {
                     <Heart  src={liked[i] ? require("../../../assets/icons/heart-red-svgrepo-com.svg").default : require("../../../assets/icons/heart-svgrepo-com.svg").default} alt="Like"/>
                   </HeartDiv>
               </SliderContainer>
-              <p>{item.title}</p>
+              <TextContainer>
+                <BoldText>{item.title}</BoldText>
+                <LightText>{item.added}</LightText>
+                <LightText>{item.date}</LightText>
+                <BoldText>{item.price} Night</BoldText>
+                </TextContainer>
             </M>
           ))}
         </Div>
@@ -261,15 +279,11 @@ const Wrapper = styled.section`
   /* z-index: 9; */
 `;
 const FlexWrapper = styled.section`
-/* padding:30px 0; */
+padding:15px 0;
 width: 90%;
 margin: 0 auto;
 `;
 const Div = styled.section`
-  /* height: 1800px; */
-  /* z-index: 0; */
-  /* background-color: #000; */
-  /* overflow-y: hidden; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -277,6 +291,8 @@ const Div = styled.section`
 `;
 const M = styled.section`
   width: 23.5%;
+  margin-bottom: 30px;
+
 `;
 
 const Bottom = styled.section`
@@ -293,9 +309,21 @@ display: block;
 `;
 const SliderContainer = styled.div`
   position: relative;
-  /* display: flex; */
 `;
-
+const TextContainer = styled.div`
+padding: 10px 0;
+`;
+const BoldText = styled.h5`
+color: #000;
+font-size:14px;
+font-weight: 600;
+`;
+const LightText = styled.h6`
+color:#808080;
+margin: 5px 0;
+font-size: 14px;
+`;
+ 
 const Img = styled.img`
   width: 100%;
   height: auto;

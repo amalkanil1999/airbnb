@@ -126,7 +126,7 @@ function Vectors() {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 12,
+    slidesToShow: 10,
     slidesToScroll: 3,
     nextArrow: (
       <div>
@@ -186,15 +186,16 @@ border-bottom: 2px solid #fff;
 
 const Img = styled.img`
 width: 25px;
-height: 25px;
   object-fit: contain;
   margin: 0 auto;
 `;
 
 const Para = styled.h5`
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
+  color: #000;
   white-space: nowrap;
+  margin:10px 0;
 `;
 
 const ArrowImage = styled.img`

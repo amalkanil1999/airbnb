@@ -153,31 +153,35 @@ const PopupContainer = styled.div`
 
 const Popupdiv = styled.div`
   width: 50%;
-  height: 85%;
+  height: 80%;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-`;
+  `;
 
 
 const H3 = styled.h3`
   font-size: 18px;
   text-align: center;
+  color: #000;
+  width: 10%;
+  font-weight: 600;
   margin: 0 auto;
-`;
+  `;
 const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border-bottom: 1px solid #e0e0e0;
-  padding: 0 10px;
+  padding: 10px;
   position: sticky;
   top: 0;
   background-color: #fff;
-  height: 50px;
 `;
 
+  const Flex = styled.div`
+  `;
 const Content = styled.div`
   text-align: center;
   padding: 25px;
@@ -189,27 +193,28 @@ const InputCompo = styled.div`
 `;
 
 const H5 = styled.h5`
-  font-size: 24px;
-  margin: 0px;
+  font-size: 26px;
+  color: #000;
   text-align: left;
   font-weight: 600;
+  margin-bottom: 10px;
 `;
 const H6 = styled.h5`
   font-size: 16px;
-  margin: 0;
+  color: #000;
   text-align: left;
   font-weight: 360;
 `;
 const SelectDiv = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  justify-content: flex-end;
+  margin-top: 20px;
 `;
 
 const Type = styled.div`
-  padding: 10px;
+  padding: 30px 0;
   width: 30%;
-  height: 40px;
   border-top-left-radius: ${props => props.first ? '10px' : '0'};
   border-bottom-left-radius: ${props => props.first ? '10px' : '0'};
   border-top-right-radius: ${props => props.last ? '10px' : '0'};
@@ -230,9 +235,6 @@ const Text = styled.h5`
   font-size: 16px;
   font-weight: 400;
 `;
-const Flex = styled.div`
-overflow-y: hidden;
-`;
 const Rooms = styled.div`
 margin: 15px 0 ;
 `;
@@ -244,11 +246,9 @@ const SelectDivDown = styled.div`
 
 `;
 const TypeRooms = styled.div`
-  padding: 10px;
-  width: 5%;
-  height: 20px;
-  padding: 10px 15px;
-  border-radius: 25px;
+  height: 40px;
+  width: 60px;
+  border-radius:18px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -277,15 +277,11 @@ const Closebutton = styled.button`
   cursor: pointer;
 `;
 const H3Down = styled.button`
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
-  margin:0;
-  border: none;
-  background-color: #fff;
 `;
 const ClosebuttonDown = styled.button`
-  width: 20%;
-  height: 90%;
+  padding: 10px 20px;
   background-color: #000;
   display: flex;
   align-items: center;

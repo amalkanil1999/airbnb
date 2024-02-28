@@ -63,8 +63,7 @@ const Wrapper = styled.section`
   /* box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); */
 `;
 const FlexWrapper = styled.section`
-  width: 100%;
-  margin: 0 auto;
+  /* width: 100%; */
   /* position: fixed;
   top:170px;
   left:0px; */
@@ -77,29 +76,26 @@ const Slidercont = styled.section`
 `;
 const FilterDiv = styled(NavLink)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   border: 1px solid #e0e0e0;
-  width: 20%;
-  height: 50px;
-  padding: 0 10px ;  
-  border-radius: 16px;
-  text-decoration: none;
+  width: 30%;
+  padding:15px 10px ;  
+  border-radius: 12px;
   color: #000;
   `;
 const MainC = styled.section`
 padding-top: 20px;
-
 `;
 const PopupButton = styled.section`
 display: flex;
 align-items: center;
 justify-content: space-between;
 border: 1px solid #e0e0e0;
-height: 50px;
-width: 60%;
-padding: 0 10px ;  
-border-radius: 16px;
+width: 70%;
+padding:13px 10px ;   
+border-radius: 12px;
+margin-left: 10px;
 `;
 const Top = styled.section`
   display: flex;
@@ -110,6 +106,7 @@ const Filterimg = styled.img`
   display: block;
   width: 20px;
   margin-right: 10px;
+  margin-right: 20px;
 `;
 const ToggleBtn = styled.button`
   position: relative;
@@ -119,7 +116,6 @@ const ToggleBtn = styled.button`
   border-radius: 22px;
   background-color: #A0A0A0;
   cursor: pointer;
-  margin-left:10px;
   &.toggled {
     background-color:	#282828 ;
 
@@ -152,9 +148,10 @@ const Thumb = styled.div`
   }
 `
 const Filter = styled.h5`
-font-weight: 500;
+font-weight: 600;
 font-size: 13px;
-
+color: #000;
+white-space: nowrap;
 `;
 const LeftDiv = styled.div`
   display: flex;
