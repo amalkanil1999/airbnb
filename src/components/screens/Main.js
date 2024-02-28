@@ -59,14 +59,8 @@ margin: 0 auto;
 `;
 
 const Wrapper = styled.section`
-  
-  /* box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); */
 `;
 const FlexWrapper = styled.section`
-  /* width: 100%; */
-  /* position: fixed;
-  top:170px;
-  left:0px; */
   background-color: #fff;
   border-top: 1px solid #a9a9a9;
 `;
@@ -161,7 +155,6 @@ const LeftDiv = styled.div`
   margin-left: 50px;
 `;
 const Bottom = styled.section`
-/* height: 800px; */
 `;
 
 export default Main;

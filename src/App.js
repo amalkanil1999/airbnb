@@ -15,8 +15,8 @@ function App() {
         <HeaderTop />
         <Routes>
           <Route path='/' element={<Cards />} />
-          <Route path='experiences' element={<Experiances />} />
-          </Routes>
+          <Route path='/experiences' element={<Experiances />} />
+        </Routes>
       </Router>
     </>
   );

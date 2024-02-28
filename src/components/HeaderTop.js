@@ -50,9 +50,9 @@ function HeaderTop() {
             <Para isActive={checkButtonsVisible}>Experiance</Para>
           </SnavLinkButton>
           <SnavLink
-            to="/experiences"
-            isActive={activeNavItem === "onlineExperience"}
-            onClick={() => handleNavItemClick("onlineExperience")}
+            to="experiences"
+            isActive={activeNavItem === "onlineExperiences"}
+            onClick={() => handleNavItemClick("onlineExperiences")}
           >
             <ParaH>Online Experiance</ParaH>
           </SnavLink>
@@ -128,7 +128,6 @@ function HeaderTop() {
         </Curve>
       </Bottom>
       </Wrapper>
-      
       </MainWrapper>
       <Popup trigger={openPopup} setTrigger={setopenPopup}></Popup>
       </BonusWrapper>
