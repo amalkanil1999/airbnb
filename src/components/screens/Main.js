@@ -152,7 +152,7 @@ const LeftDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 30%;
-  margin-left: 50px;
+  margin-left: 20px;
 `;
 const Bottom = styled.section`
 `;

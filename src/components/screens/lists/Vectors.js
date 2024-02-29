@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import Slider from 'react-slick';
-import './slick/slick.css';
-import './slick/slick-theme.css';
-
+import React, { useRef, useEffect, useState } from "react";
+import styled from "styled-components";
+import Slider from "react-slick";
+import "./slick/slick.css";
+import "./slick/slick-theme.css";
 
 function Vectors() {
   const vectordata = [
@@ -122,48 +121,120 @@ function Vectors() {
       imgSrc:
         "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
     },
-  ]
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 10,
-    slidesToScroll: 3,
-    nextArrow: (
-      <div>
-        <ArrowmDiv className="next-slick-arrow">
-           <ArrowImage src={require("../../../assets/icons/arrowhead-right-svgrepo-com.svg").default} />
-        </ArrowmDiv>
-      </div>
-    ),
+    {
+      label: "Cabins",
+      imgSrc:
+        "https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg",
+    },
+    {
+      label: "Caves",
+      imgSrc:
+        "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
+    },
+    {
+      label: "Trending",
+      imgSrc:
+        "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
+    },
+    {
+      label: "Golfing",
+      imgSrc:
+        "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
+    },
+    {
+      label: "Cabins",
+      imgSrc:
+        "https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg",
+    },
+    {
+      label: "Caves",
+      imgSrc:
+        "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
+    },
+    {
+      label: "Trending",
+      imgSrc:
+        "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
+    },
+    {
+      label: "Golfing",
+      imgSrc:
+        "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
+    },
+  ];
 
-    prevArrow: (
-      <div>
-        <ArrowmDiv className="next-slick-arrow rotate-180">
-        <ArrowImage src={require("../../../assets/icons/arrowhead-left-svgrepo-com.svg").default} />
-        </ArrowmDiv>
-      </div>
-    ),
+  const sliderRefs = useRef([]);
+
+  const settings = {
+    infinte: false,
+    speed: 500,
+    slidesToShow: 11,
+    slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 3,
-        }
-       },
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
-         slidesToShow: 6,
-        }
-      }
-    ]
+          slidesToShow: 6,
+        },
+      },
+    ],
+  };
+  useEffect(() => {
+    sliderRefs.current = Array(vectordata.length)
+      .fill()
+      .map((_, i) => sliderRefs.current[i] || React.createRef());
+  }, [vectordata.length]);
+
+  const PrevArrow = (props) => {
+    return (
+      <ArrowmDivL
+        {...props}
+        className={`next-slick-arrow rotate-180 ${
+          props.currentSlide === 0 ? "hidden" : ""
+        }`}
+      >
+        <ArrowImage
+          src={
+            require("../../../assets/icons/arrowhead-left-svgrepo-com.svg")
+              .default
+          }
+        />
+      </ArrowmDivL>
+    );
   };
 
+  const NextArrow = (props) => {
+    return (
+      <ArrowmDivR
+        {...props}
+        className={`next-slick-arrow ${
+          props.currentSlide === props.slideCount - 1 ? "hidden" : ""
+        }`}
+      >
+        <ArrowImage
+          src={
+            require("../../../assets/icons/arrowhead-right-svgrepo-com.svg")
+              .default
+          }
+        />
+      </ArrowmDivR>
+    );
+  };
   return (
-    <Slider {...settings}>
-      {vectordata.map((item, i) => (
-        <Slide key={i}>
+    <Slider
+      {...settings}
+      prevArrow={<PrevArrow />}
+      nextArrow={<NextArrow />}
+    >
+      {vectordata.map((item, index) => (
+        <Slide key={index}>
           <Img src={item.imgSrc} alt={item.label} />
           <Para>{item.label}</Para>
         </Slide>
@@ -173,19 +244,19 @@ function Vectors() {
 }
 
 const Slide = styled.div`
-&:hover{
-  opacity:1 !important;
-  border-bottom: 2px solid #696969;
-  transition: all 0.2s;
-}
-text-align:center;
-margin: 10px;
-opacity: 0.7;
-border-bottom: 2px solid #fff;
+  &:hover {
+    opacity: 1 !important;
+    border-bottom: 2px solid #696969;
+    transition: all 0.2s;
+  }
+  text-align: center;
+  margin: 10px;
+  opacity: 0.7;
+  border-bottom: 2px solid #fff;
 `;
 
 const Img = styled.img`
-width: 25px;
+  width: 25px;
   object-fit: contain;
   margin: 0 auto;
 `;
@@ -195,22 +266,52 @@ const Para = styled.h5`
   font-weight: 600;
   color: #000;
   white-space: nowrap;
-  margin:10px 0;
+  margin: 10px 0;
 `;
 
 const ArrowImage = styled.img`
-width: 20px;
-display:block;
+  width: 20px;
+  display: block;
+  margin-left: 4px;
+  margin-top: 5px;
 `;
-const ArrowmDiv = styled.div`
-border-radius: 50%;
-border: 1px solid #000;
-height: 30px;
-width: 30px;
-display: flex;
-justify-content:center;
-align-items:center;
+const ArrowmDivL = styled.div`
+  border-radius: 50%;
+  border: 1px solid #000;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 0 0 14px 22px #fff; 
+  &.hidden{
+    display: none !important;
+  }
 `;
-
+const ArrowmDivR = styled.div`
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #000;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 2;
+  box-shadow: 0 0 14px 30px #fff; 
+  &.hidden{
+    display: none !important;
+  }
+`;
 
 export default Vectors;

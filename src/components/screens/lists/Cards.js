@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 function Cards() {
   const Imagecards = [
     {
-      rating: "4",
+      rating: "4.5",
       added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -24,7 +24,7 @@ function Cards() {
       title: "Mariefred, Sweden",
     },
     {
-      rating: "4",
+      rating: "4.9",
       added: "8 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -38,7 +38,7 @@ function Cards() {
       title: "Marbella, Spain",
     },
     {
-      rating: "4",
+      rating: "3.9",
       added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -52,7 +52,7 @@ function Cards() {
       title: "Molde, Norway",
     },
     {
-      rating: "4",
+      rating: "4.1",
       added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -66,7 +66,7 @@ function Cards() {
       title: "Broken Bow, US",
     },
     {
-      rating: "4",
+      rating: "4.2",
       added: "6 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -80,7 +80,7 @@ function Cards() {
       title: "Lac-Beauport, Canada",
     },
     {
-      rating: "4",
+      rating: "2.9",
       added: "12 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -94,7 +94,7 @@ function Cards() {
       title: "Marrakech, Morroco",
     },
     {
-      rating: "4",
+      rating: "4.95",
       added: "7 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -108,7 +108,7 @@ function Cards() {
       title: "Breckenridge, Colorado",
     },
     {
-      rating: "4",
+      rating: "4.5",
       added: "7 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -122,7 +122,7 @@ function Cards() {
       title: "Gallina, Italy",
     },
     {
-      rating: "4",
+      rating: "4.1",
       added: "3 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -136,7 +136,7 @@ function Cards() {
       title: "Mijas, Spain",
     },
     {
-      rating: "4",
+      rating: "3.99",
       added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -150,7 +150,7 @@ function Cards() {
       title: "Asciano, Italy",
     },
     {
-      rating: "4",
+      rating: "3.8",
       added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -164,7 +164,7 @@ function Cards() {
       title: "Crklada,Croatia",
     },
     {
-      rating: "4",
+      rating: "4.7",
       added: "2 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -178,7 +178,7 @@ function Cards() {
       title: "Bressanone, Italy",
     },
     {
-      rating: "4",
+      rating: "4.1",
       added: "5 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
@@ -192,8 +192,10 @@ function Cards() {
       title: "Kecamatan Kuta , Indonesia",
     },
   ];
-
+  const [hoverStates, setHoverStates] = useState(Array(Imagecards.length).fill(false));
   const [liked, setLiked] = useState(Array(Imagecards.length).fill(false));
+  const sliderRefs = useRef([]);
+
 
   const toggleLike = (index) => {
     const newLiked = [...liked];
@@ -201,11 +203,10 @@ function Cards() {
     setLiked(newLiked);
   };
   
-  const sliderRefs = useRef([]);
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -217,27 +218,31 @@ function Cards() {
       .map((_, i) => sliderRefs.current[i] || React.createRef());
   }, [Imagecards.length]);
 
-  const PrevArrow = (props) => (
-    <ArrowmDivL {...props} className="next-slick-arrow rotate-180">
-      <ArrowImage
-        src={
-          require("../../../assets/icons/arrowhead-left-svgrepo-com.svg")
-            .default
-        }
-      />
-    </ArrowmDivL>
-  );
-
-  const NextArrow = (props) => (
-    <ArrowmDivR {...props} className="next-slick-arrow">
-      <ArrowImage
-        src={
-          require("../../../assets/icons/arrowhead-right-svgrepo-com.svg")
-            .default
-        }
-      />
-    </ArrowmDivR>
-  );
+  const PrevArrow = ({ currentSlide, hoverState, onClick }) => {
+    return (
+      <ArrowmDivL
+        className={`next-slick-arrow ${currentSlide === 0 || !hoverState ? 'hidden' : ''}`}
+        onClick={onClick}
+      >
+        <ArrowImage
+          src={require("../../../assets/icons/arrowhead-left-svgrepo-com.svg").default}
+        />
+      </ArrowmDivL>
+    );
+  };
+  
+  const NextArrow = ({ currentSlide, slideCount, hoverState, onClick }) => {
+    return (
+      <ArrowmDivR
+        className={`next-slick-arrow ${currentSlide === slideCount - 1 || !hoverState ? 'hidden' : ''}`}
+        onClick={onClick}
+      >
+        <ArrowImage
+          src={require("../../../assets/icons/arrowhead-right-svgrepo-com.svg").default}
+        />
+      </ArrowmDivR>
+    );
+  };
   return (
     <MainWrapper>
       <Wrapper>
@@ -246,18 +251,29 @@ function Cards() {
       <FlexWrapper>
         <Div>
           {Imagecards.map((item, i) => (
-            <M key={i}  >
+            <M key={i} initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 , scaleY: [0.1,0.2,0.3, 0.4,0.5,0.6,0.7, 0.8, 0.9, 1]}}
+              transition={{ duration: 0.5, ease: "easeIn", delay: i * 0.2 }}
+              onMouseEnter={() => {
+                const newHoverStates = [...hoverStates];
+                newHoverStates[i] = true;
+                setHoverStates(newHoverStates);
+              }}
+              onMouseLeave={() => {
+                const newHoverStates = [...hoverStates];
+                newHoverStates[i] = false;
+                setHoverStates(newHoverStates);
+              }}>
               <SliderContainer>
-                <Bottom
-                  initial={{ opacity: 0, y: 200 }}
-                  animate={{ opacity: 1, y: 0 , scaleY: [0.1,0.2,0.3, 0.4,0.5,0.6,0.7, 0.8, 0.9, 1]}}
-                  transition={{duration: 0.5, ease: "easeIn",  delay: i * 0.2 }}
-                >
+                <GuestFav>
+                  <Fav>Guest favourite</Fav>
+                </GuestFav>
+                <Bottom>
                   <Slider
                     ref={sliderRefs.current[i]}
                     {...settings}
-                    prevArrow={<PrevArrow />}
-                    nextArrow={<NextArrow />}
+                    prevArrow={<PrevArrow currentSlide={0} hoverState={hoverStates[i]} onClick={() => sliderRefs.current[i].slickPrev()} />}
+                    nextArrow={<NextArrow currentSlide={0} slideCount={item.imgSrc.length} hoverState={hoverStates[i]} onClick={() => sliderRefs.current[i].slickNext()} />}
                   >
                     {item.imgSrc.map((image, index) => (
                       <Img
@@ -282,10 +298,18 @@ function Cards() {
                 </HeartDiv>
               </SliderContainer>
               <TextContainer>
+                <Left>
                 <BoldText>{item.title}</BoldText>
                 <LightText>{item.added}</LightText>
                 <LightText>{item.date}</LightText>
-                <BoldText>{item.price} Night</BoldText>
+                  <BoldText>{item.price} Night</BoldText>
+                </Left>
+                <Right>
+                  <StarC>
+                    <Star src={require("../../../assets/icons/star-svgrepo-com.svg").default} alt="starimage" />
+                    <Rating>{item.rating}</Rating>
+                  </StarC>
+                </Right>
               </TextContainer>
             </M>
           ))}
@@ -312,13 +336,14 @@ const Div = styled(motion.section)`
 const M = styled(motion.section)`
   width: 23.5%;
   margin-bottom: 30px;
+  
 `;
 
 const Bottom = styled(motion.section)``;
 const HeartDiv = styled.section`
   width: 25px;
   position: absolute;
-  top: 5px;
+  top: 13px;
   right: 10px;
 `;
 const Heart = styled(motion.img)`
@@ -327,9 +352,31 @@ const Heart = styled(motion.img)`
 `;
 const SliderContainer = styled.div`
   position: relative;
+  z-index: 1;
 `;
+const GuestFav = styled.div`
+position: absolute;
+top: 15px;
+left: 15px;
+z-index: 2;
+height: 25px;
+width: 35%;
+background-color: #fff;
+border-radius:11px;
+`;
+const Fav = styled.p`
+color: #000;
+white-space: nowrap;
+font-size: 14px;
+text-align: center;
+font-weight: 500;
+`;
+
+
 const TextContainer = styled.div`
   padding: 10px 0;
+  display: flex;
+  justify-content:space-between;
 `;
 const BoldText = styled.h5`
   color: #000;
@@ -341,20 +388,33 @@ const LightText = styled.h6`
   margin: 5px 0;
   font-size: 14px;
 `;
+const Left = styled.div``;
+const Right = styled.div``;
+const StarC = styled.div`
+display:flex;
+
+`;
+const Star = styled.img`
+width: 14px;
+display: block;
+`;
+const Rating = styled.h6`
+color:#000;
+font-size: 14px;
+font-weight: 400;
+`;
 
 const Img = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  aspect-ratio: 1;
+  aspect-ratio: 14/13;
   border-radius: 10px;
 `;
 
 const ArrowImage = styled.img`
   width: 20px;
   display: block;
-  margin-left: 4px;
-  margin-top: 5px;
 `;
 
 const ArrowmDivL = styled.div`
@@ -371,6 +431,9 @@ const ArrowmDivL = styled.div`
   transform: translateY(-50%);
   z-index: 2;
   background-color: #fff;
+  &.hidden{
+    display: none !important;
+  }
 `;
 
 const ArrowmDivR = styled.div`
@@ -387,5 +450,8 @@ const ArrowmDivR = styled.div`
   right: 10px;
   transform: translateY(-50%);
   z-index: 2;
+  &.hidden{
+    display: none !important;
+  }
 `;
 export default Cards;
