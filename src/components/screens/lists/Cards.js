@@ -336,7 +336,18 @@ const Div = styled(motion.section)`
 const M = styled(motion.section)`
   width: 23.5%;
   margin-bottom: 30px;
-  
+  @media all and (max-width: 1280px){
+    width: 32%;
+  }
+  @media all and (max-width: 980px){
+    width: 48%;
+  }
+  @media all and (max-width: 640px){
+    width: 98%;
+  }
+  @media all and (max-width: 480px){
+    /* display: none; */
+  }
 `;
 
 const Bottom = styled(motion.section)``;

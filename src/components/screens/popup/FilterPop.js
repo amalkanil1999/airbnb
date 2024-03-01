@@ -158,6 +158,12 @@ const Popupdiv = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
+  @media all and (max-width: 980px){
+    width: 90%;
+  }
+  @media all and (max-width: 768px){
+    width: 95%;
+  }
   `;
 
 

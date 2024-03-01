@@ -56,6 +56,9 @@ function Main() {
 const BonusWrapper = styled.section`
 width: 90%;
 margin: 0 auto;
+@media all and (max-width: 480px){
+    width: 100%;
+  }
 `;
 
 const Wrapper = styled.section`
@@ -66,7 +69,15 @@ const FlexWrapper = styled.section`
 `;
 const Slidercont = styled.section`
   width: 70%;
-  
+  @media all and (max-width: 1280px){
+    width: 85%;
+  }
+  @media all and (max-width: 768px){
+    width: 80%;
+  }
+  @media all and (max-width: 480px){
+    width: 100%;
+  }
 `;
 const FilterDiv = styled(NavLink)`
   display: flex;
@@ -77,6 +88,15 @@ const FilterDiv = styled(NavLink)`
   padding:15px 10px ;  
   border-radius: 12px;
   color: #000;
+  @media all and (max-width: 1280px){
+    width: 100%;
+  }
+  @media all and (max-width: 640px){
+    border-radius: 17px;
+    /* display: block; */
+    margin: 0 auto;
+    width: 70%;
+  }
   `;
 const MainC = styled.section`
 padding-top: 20px;
@@ -90,6 +110,9 @@ width: 70%;
 padding:13px 10px ;   
 border-radius: 12px;
 margin-left: 10px;
+@media all and (max-width: 1280px){
+    display: none;
+  }
 `;
 const Top = styled.section`
   display: flex;
@@ -99,8 +122,12 @@ const Top = styled.section`
 const Filterimg = styled.img`
   display: block;
   width: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   margin-right: 20px;
+  @media all and (max-width: 640px){
+    border-radius: 50%;
+    /* margin-right: 0; */
+  }
 `;
 const ToggleBtn = styled.button`
   position: relative;
@@ -146,6 +173,9 @@ font-weight: 600;
 font-size: 13px;
 color: #000;
 white-space: nowrap;
+@media all and (max-width: 640px){
+    display:none;
+  }
 `;
 const LeftDiv = styled.div`
   display: flex;
@@ -153,6 +183,18 @@ const LeftDiv = styled.div`
   align-items: center;
   width: 30%;
   margin-left: 20px;
+  @media all and (max-width: 1280px){
+    width: 10%;
+  }
+  @media all and (max-width: 980px){
+    width: 14%;
+  }
+  @media all and (max-width: 768px){
+    width: 20%;
+  }
+  @media all and (max-width: 480px){
+    display: none;
+  }
 `;
 const Bottom = styled.section`
 `;

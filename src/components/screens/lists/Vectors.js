@@ -171,17 +171,28 @@ function Vectors() {
     slidesToShow: 11,
     slidesToScroll: 3,
     responsive: [
+      // {
+      //   breakpoint: 500,
+      //   settings: {
+      //     slidesToShow: 4,
+      //   },
+      // },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 5,
-          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 6,
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 8,
         },
       },
     ],
@@ -293,6 +304,9 @@ const ArrowmDivL = styled.div`
   &.hidden{
     display: none !important;
   }
+  @media all and (max-width: 768px){
+    display: none !important;
+  }
 `;
 const ArrowmDivR = styled.div`
   background-color: #fff;
@@ -310,6 +324,9 @@ const ArrowmDivR = styled.div`
   z-index: 2;
   box-shadow: 0 0 14px 30px #fff; 
   &.hidden{
+    display: none !important;
+  }
+  @media all and (max-width: 768px){
     display: none !important;
   }
 `;

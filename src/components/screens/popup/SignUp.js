@@ -55,6 +55,9 @@ const Popupdiv = styled.div`
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  @media all and (max-width: 1280px){
+    width: 50%;
+  }
 `;
 
 const H3 = styled.h3`

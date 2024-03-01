@@ -148,16 +148,39 @@ margin: 0 auto;
 `;
 const Wrapper = styled.section`
   padding: 20px 0;
- 
+  display: flex;
+  flex-direction: column;
 `;
 const MainC = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 20px;
+  width: 100%;
+  @media all and (max-width: 480px){
+    width: 25%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  @media all and (max-width: 360px){
+    width: 40%;
+  }
 `;
 const H1container = styled.div`
-width: 20%;`;
+width: 20%;
+@media all and (max-width: 980px){
+    width: 15%;
+  }
+  @media all and (max-width: 768px){
+    width: 25%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  @media all and (max-width: 480px){
+    width: 100%;
+  }
+`;
 
 const H1 = styled.h1`
   width: 100px;
@@ -169,6 +192,18 @@ const Middle = styled.div`
   justify-content: center;
   align-items: center;
   width: 40%;
+  @media all and (max-width: 980px){
+    width: 51%;
+  }
+  @media all and (max-width: 768px){
+    width: 70%;
+  }
+  @media all and (max-width: 640px){
+    width: 100%;
+  }
+  @media all and (max-width: 480px){
+    display: none;
+  }
 `;
 const SnavLinkButton = styled.button`
   &:hover {
@@ -207,6 +242,12 @@ const Right = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 20%;
+  @media all and (max-width: 980px){
+    width: 33%;
+  }
+  @media all and (max-width: 768px){
+    display: none;
+  }
 `;
 const Logo = styled.img`
   width: 100%;
@@ -268,6 +309,7 @@ const Bottom = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 const Curve = styled.div`
   display: flex;
@@ -276,6 +318,15 @@ const Curve = styled.div`
   border-radius: 40px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 60%;
+  @media all and (max-width: 1280px){
+    width: 90%;
+  }
+  @media all and (max-width: 980px){
+    width: 100%;
+  }
+  @media all and (max-width: 768px){
+    width: 70%;
+  }
 `;
 const DestinationButton = styled.div`
   width: 30%;
@@ -284,11 +335,18 @@ const DestinationButton = styled.div`
     background-color: #e0e0e0;
     border-radius: 40px;
   }
+  @media all and (max-width: 768px){
+    width: 50%;
+  }
+  @media all and (max-width: 360px){
+    display: none;
+  }
 `;
 
 const Inputdestination = styled.input`
   font-size: 15px;
   font-weight: 500;
+  width: 90%;
   ${DestinationButton}:hover & {
     background-color: #e0e0e0;
   }
@@ -300,6 +358,9 @@ const CheckButton = styled.div`
   &:hover {
     background-color: #e0e0e0;
     border-radius: 40px;
+  }
+    @media all and (max-width: 768px){
+    display: none;
   }
 `;
 const CheckButtonPop = styled.div`
@@ -331,12 +392,20 @@ const GuestButton = styled.div`
     background-color: #e0e0e0;
     border-radius: 40px;
   }
+  @media all and (max-width: 768px){
+    width: 50%;
+  }
+  @media all and (max-width: 360px){
+    width: 100%;
+    
+  }
 `;
 const Left = styled.div`
 width: 60%;`;
 const GuestInput = styled.input`
   font-size:15px;
   font-weight: 500;
+  width: 90%;
   ${GuestButton}:hover & {
     background-color: #e0e0e0;
   }
