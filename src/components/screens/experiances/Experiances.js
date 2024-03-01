@@ -8,13 +8,13 @@ function Experiances() {
         <H1>New this week</H1>
         <ImageContainers>
           <ImageDiv>
-            <Img src={require("../../assets/image/images/2fe40f4f-5ea3-432f-9fbd-e2ce3c6c3855.webp")} alt="curly image" />
+            <Img src={require("../../../assets/image/images/2fe40f4f-5ea3-432f-9fbd-e2ce3c6c3855.webp")} alt="curly image" />
           </ImageDiv>
           <ImageDiv>
-          <Img src={require("../../assets/image/images/58819d01-2a71-441d-b3bc-baae0cd64da1.webp")} alt="cookery"/>
+          <Img src={require("../../../assets/image/images/58819d01-2a71-441d-b3bc-baae0cd64da1.webp")} alt="cookery"/>
           </ImageDiv>
           <ImageDiv>
-          <Img src={require("../../assets/image/images/e35bb307-05f4-48a4-bdc5-3b2198bb9451.webp")} alt="desert" />
+          <Img src={require("../../../assets/image/images/e35bb307-05f4-48a4-bdc5-3b2198bb9451.webp")} alt="desert" />
           </ImageDiv>
         </ImageContainers>
        </Secondary>

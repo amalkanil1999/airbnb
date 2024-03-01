@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
-import Popup from "./screens/popup/Popup";
+import Popup from "../screens/popup/Popup";
 
 function HeaderTop() {
   const [openPopup, setopenPopup] = useState(false);
@@ -26,7 +26,7 @@ function HeaderTop() {
         <H1>
           <LinkA>
             <Logo
-              src={require("../assets/icons/airbnb.svg").default}
+              src={require("../../assets/icons/airbnb.svg").default}
               alt="airbnb"
             />
           </LinkA>
@@ -65,7 +65,7 @@ function HeaderTop() {
             <GlobeIcon>
               <Globe
                 src={
-                  require("../assets/icons/globe-alt-svgrepo-com.svg").default
+                  require("../../assets/icons/globe-alt-svgrepo-com.svg").default
                 }
                 alt="airbnb"
               />
@@ -75,7 +75,7 @@ function HeaderTop() {
             <HamDiv>
               <Hamburger
                 src={
-                  require("../assets/icons/burger-menu-svgrepo-com.svg").default
+                  require("../../assets/icons/burger-menu-svgrepo-com.svg").default
                 }
                 alt="hamburgermenu"
               />
@@ -83,7 +83,7 @@ function HeaderTop() {
             <UserDiv>
               <UserIcon
                 src={
-                  require("../assets/icons/user-circle-svgrepo-com.svg").default
+                  require("../../assets/icons/user-circle-svgrepo-com.svg").default
                 }
                 alt="user"
               />
@@ -121,7 +121,7 @@ function HeaderTop() {
             </Left>
             <SearchContainer>
               <Search
-                src={require("../assets/icons/search-svgrepo-com.svg").default}
+                src={require("../../assets/icons/search-svgrepo-com.svg").default}
               />
             </SearchContainer>
           </GuestButton>

@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
-import "./slick/slick.css";
-import "./slick/slick-theme.css";
+import "../slick/slick.css";
+import "../slick/slick-theme.css";
 
 function Vectors() {
   const vectordata = [
@@ -213,7 +213,7 @@ function Vectors() {
       >
         <ArrowImage
           src={
-            require("../../../assets/icons/arrowhead-left-svgrepo-com.svg")
+            require("../../../../assets/icons/arrowhead-left-svgrepo-com.svg")
               .default
           }
         />
@@ -231,7 +231,7 @@ function Vectors() {
       >
         <ArrowImage
           src={
-            require("../../../assets/icons/arrowhead-right-svgrepo-com.svg")
+            require("../../../../assets/icons/arrowhead-right-svgrepo-com.svg")
               .default
           }
         />

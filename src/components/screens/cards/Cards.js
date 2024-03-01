@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import Main from "../Main";
+import Main from "../main/Main";
 import styled from "styled-components";
 import Imageicon from "../../../assets/image/images/image1.webp";
 import Slider from "react-slick";
@@ -14,7 +14,7 @@ function Cards() {
       added: "9 weeks ago",
       desc: "Beach and Sunset Views",
       imgSrc: [
-        require("../../../assets/image/images/image16.webp"),
+        require("../../../assets/image/images/image10.webp"),
         require("../../../assets/image/images/image5.webp"),
         require("../../../assets/image/images/image6.webp"),
         require("../../../assets/image/images/image7.webp"),
