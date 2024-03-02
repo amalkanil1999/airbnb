@@ -5,7 +5,7 @@ import SignUp from './SignUp';
 
 function Popup(props) {
     const popupRef = useRef(null);
-    const [openSignup, setOpenSignup] = useState(false);
+    // const [openSignup, setOpenSignup] = useState(false);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -24,12 +24,12 @@ function Popup(props) {
     <>
       <PopupContainer ref={popupRef}>
         <Popupdiv>
-          <SnavLink onClick={()=>setOpenSignup(true)}><H1>Sign Up</H1></SnavLink>
+          <SnavLink onClick={props.toggleSignup}><H1>Sign Up</H1></SnavLink>
           <SnavLink to="#"><H1>Log In</H1></SnavLink>
           <HR />
           <SnavLink to="#"><H1>Airbnb your Home</H1></SnavLink>
             <SnavLink to="#"><H1>Help center</H1></SnavLink>
-            <SignUp trigger={openSignup} setTrigger={setOpenSignup}></SignUp>
+            {/* <SignUp trigger={openSignup} setTrigger={setOpenSignup}></SignUp> */}
         </Popupdiv>
       </PopupContainer>
       {props.children}

@@ -5,15 +5,15 @@ import Tick from "../../../assets/icons/tick-svgrepo-com.svg"
 import { NavLink } from "react-router-dom";
 import FilterPop from "../popup/FilterPop";
 
-function Main() {
+function Main({ toggleFilter }) {
   const [toggled, setToggled] = useState(false);
-  const [openPopup, setopenPopup] = useState(false);
+  const [filterPopOpen, setFilterPopOpen] = useState(false);
   const handleToggle = () => {
     setToggled(!toggled);
   };
   return (
     
-    <Wrapper>
+    <Wrapper filterPopOpen={filterPopOpen}>
       <FlexWrapper>
       <BonusWrapper>
         <MainC>
@@ -22,7 +22,7 @@ function Main() {
               <Vectors />
             </Slidercont>
             <LeftDiv>
-            <FilterDiv onClick={()=>setopenPopup(true)}>
+            <FilterDiv onClick={toggleFilter}>
               <Filterimg
                 src={
                   require("../../../assets/icons/filter-horizontal-svgrepo-com.svg")
@@ -47,8 +47,7 @@ function Main() {
           </Bottom>
           </BonusWrapper>
       </FlexWrapper>
-      <FilterPop trigger={openPopup} setTrigger={setopenPopup}>
-              </FilterPop>
+      {/* <FilterPop trigger={toggled} setTrigger={setToggled} /> */}
       </Wrapper>
       
   );
@@ -56,7 +55,7 @@ function Main() {
 const BonusWrapper = styled.section`
 width: 90%;
 margin: 0 auto;
-@media all and (max-width: 480px){
+@media all and (max-width: 768px){
     width: 100%;
   }
 `;
@@ -66,6 +65,10 @@ const Wrapper = styled.section`
 const FlexWrapper = styled.section`
   background-color: #fff;
   border-top: 1px solid #a9a9a9;
+  @media all and (max-width: 768px){
+    border: none;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); 
+  }
 `;
 const Slidercont = styled.section`
   width: 70%;
@@ -73,9 +76,6 @@ const Slidercont = styled.section`
     width: 85%;
   }
   @media all and (max-width: 768px){
-    width: 80%;
-  }
-  @media all and (max-width: 480px){
     width: 100%;
   }
 `;
@@ -91,15 +91,15 @@ const FilterDiv = styled(NavLink)`
   @media all and (max-width: 1280px){
     width: 100%;
   }
-  @media all and (max-width: 640px){
-    border-radius: 17px;
-    /* display: block; */
-    margin: 0 auto;
-    width: 70%;
+  @media all and (max-width: 768px){
+    display: none;
   }
   `;
 const MainC = styled.section`
 padding-top: 20px;
+@media all and (max-width: 768px){
+  padding-top: 0px;
+  }
 `;
 const PopupButton = styled.section`
 display: flex;

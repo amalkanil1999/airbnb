@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { styled } from "styled-components";
 
-function SignUp(props) {
+function FilterPop(props) {
   const [selectedType, setSelectedType] = useState('Any type');
   const [selectedBedroom, setSelectedBedroom] = useState('Any');
   const [selectedBed, setSelectedBed] = useState('Any');
@@ -21,6 +21,7 @@ function SignUp(props) {
   const handleBathroomClick = (type) => {
     setSelectedBathroom(type);
   };
+  
 
   return props.trigger ? (
     <>
@@ -137,7 +138,7 @@ function SignUp(props) {
 }
 
 const PopupContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0px;
   bottom: 0;
   left: 0;
@@ -159,11 +160,18 @@ const Popupdiv = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   @media all and (max-width: 980px){
-    width: 90%;
+    width: 100%;
+    height: 95%;
+  }
+  /* @media all and (max-width: 768px){
+    width: 95%;
   }
   @media all and (max-width: 768px){
     width: 95%;
   }
+  @media all and (max-width: 768px){
+    width: 95%;
+  } */
   `;
 
 
@@ -204,6 +212,9 @@ const H5 = styled.h5`
   text-align: left;
   font-weight: 600;
   margin-bottom: 10px;
+  @media all and (max-width: 768px){
+    font-size: 18px;
+  }
 `;
 const H6 = styled.h5`
   font-size: 16px;
@@ -233,13 +244,22 @@ const Type = styled.div`
   border: 1px solid #e0e0e0;
   &:hover{
   border: 1px solid #000;
-
+ 
+  }
+  @media all and (max-width: 768px){
+    padding: 20px 0;
+  }
+  @media all and (max-width: 768px){
+    padding: 20px 0;
   }
   `;
 const Text = styled.h5`
   color: ${props => props.clicked ? 'white' : 'black'};
   font-size: 16px;
   font-weight: 400;
+  @media all and (max-width: 480px){
+    font-size: 14px;
+  }
 `;
 const Rooms = styled.div`
 margin: 15px 0 ;
@@ -249,7 +269,6 @@ const SelectDivDown = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 15px;
-
 `;
 const TypeRooms = styled.div`
   height: 40px;
@@ -305,4 +324,4 @@ white-space: nowrap;
 font-weight: 550;
 `;
 
-export default SignUp;
+export default FilterPop;

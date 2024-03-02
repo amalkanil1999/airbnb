@@ -171,22 +171,22 @@ function Vectors() {
     slidesToShow: 11,
     slidesToScroll: 3,
     responsive: [
-      // {
-      //   breakpoint: 500,
-      //   settings: {
-      //     slidesToShow: 4,
-      //   },
-      // },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 8,
         },
       },
       {

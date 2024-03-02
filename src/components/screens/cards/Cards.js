@@ -6,8 +6,9 @@ import Slider from "react-slick";
 import "./slick/slick.css";
 import "./slick/slick-theme.css";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
-function Cards() {
+function Cards({ showFilter, toggleFilter, openSignup }) {
   const Imagecards = [
     {
       rating: "4.5",
@@ -244,12 +245,16 @@ function Cards() {
     );
   };
   return (
+    
     <MainWrapper>
+      <Helmet>
+        <title>Airbnb | Holiday rental</title>
+      </Helmet>
       <Wrapper>
-        <Main />
+      <Main toggleFilter={toggleFilter} />
       </Wrapper>
-      <FlexWrapper>
-        <Div>
+      <FlexWrapper >
+        <Div showFilter={showFilter} openSignup={openSignup}>
           {Imagecards.map((item, i) => (
             <M key={i} initial={{ opacity: 0, y: 200 }}
             animate={{ opacity: 1, y: 0 , scaleY: [0.1,0.2,0.3, 0.4,0.5,0.6,0.7, 0.8, 0.9, 1]}}
@@ -318,24 +323,40 @@ function Cards() {
     </MainWrapper>
   );
 }
-const MainWrapper = styled.section``;
+const MainWrapper = styled.section`
+`;
 
 const Wrapper = styled.section`
+position: sticky;
+top: 161.5px;
+z-index: 5;
+@media all and (max-width: 980px){
+  top: 219.8px;
+
+  }
+  @media all and (max-width: 768px) {
+    top: 71.5px;
+  }
 `;
 const FlexWrapper = styled.section`
   padding: 15px 0;
   width: 90%;
   margin: 0 auto;
+  
 `;
-const Div = styled(motion.section)`
+const Div = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow-x: hidden;
+  height: ${({ showFilter }) => (showFilter ? "58vh" : '')};
+  overflow-y: ${({ showFilter }) => (showFilter ? 'hidden' : 'auto')};
+  height: ${({ openSignup }) => (openSignup ? "58vh" : '')};
+  overflow-y: ${({ openSignup }) => (openSignup ? 'hidden' : 'auto')};
 `;
 const M = styled(motion.section)`
   width: 23.5%;
   margin-bottom: 30px;
+  overflow-y: hidden;
   @media all and (max-width: 1280px){
     width: 32%;
   }
