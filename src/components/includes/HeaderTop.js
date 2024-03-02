@@ -393,6 +393,7 @@ const Curve = styled.div`
   border-radius: 40px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 60%;
+  margin: 0 auto;
   @media all and (max-width: 1280px) {
     width: 90%;
   }
