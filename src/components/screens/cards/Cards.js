@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
-import Main from "../_components/main/Main";
+import Main from "./_components/main/Main";
 import styled from "styled-components";
 
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import ImageCards from "../_components/Imagecards/ImageCards";
+import ImageCards from "./_components/Imagecards/ImageCards";
 
 function Cards({ showFilter, toggleFilter, openSignup }) {
 
