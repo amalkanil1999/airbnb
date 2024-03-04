@@ -4,8 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import { Helmet } from "react-helmet";
 
-import Popup from "../screens/popup/Popup";
-import FilterPop from "../screens/popup/FilterPop";
+import Popup from "../modals/popup/Popup";
 
 function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const [openPopup, setopenPopup] = useState(false);
@@ -31,7 +30,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
               <H1>
                 <LinkA>
                   <Logo
-                    src={require("../../assets/icons/airbnb.svg").default}
+                    src={require("../../../assets/icons/airbnb.svg").default}
                     alt="airbnb"
                   />
                 </LinkA>
@@ -70,7 +69,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 <GlobeIcon>
                   <Globe
                     src={
-                      require("../../assets/icons/globe-alt-svgrepo-com.svg")
+                      require("../../../assets/icons/globe-alt-svgrepo-com.svg")
                         .default
                     }
                     alt="airbnb"
@@ -81,7 +80,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 <HamDiv>
                   <Hamburger
                     src={
-                      require("../../assets/icons/burger-menu-svgrepo-com.svg")
+                      require("../../../assets/icons/burger-menu-svgrepo-com.svg")
                         .default
                     }
                     alt="hamburgermenu"
@@ -90,7 +89,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 <UserDiv>
                   <UserIcon
                     src={
-                      require("../../assets/icons/user-circle-svgrepo-com.svg")
+                      require("../../../assets/icons/user-circle-svgrepo-com.svg")
                         .default
                     }
                     alt="user"
@@ -158,7 +157,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 <SearchContainer>
                   <Search
                     src={
-                      require("../../assets/icons/search-svgrepo-com.svg")
+                      require("../../../assets/icons/search-svgrepo-com.svg")
                         .default
                     }
                   />
@@ -171,7 +170,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                   <SearchContainerHidden>
                     <SearchHidden
                       src={
-                        require("../../assets/icons/search-svgrepo-com.svg")
+                        require("../../../assets/icons/search-svgrepo-com.svg")
                           .default
                       }
                     />
@@ -189,7 +188,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 <FilterButton onClick={toggleFilter}>
                   <Filterimg
                     src={
-                      require("../../assets/icons/filter-horizontal-svgrepo-com.svg")
+                      require("../../../assets/icons/filter-horizontal-svgrepo-com.svg")
                         .default
                     }
                   />
@@ -380,7 +379,7 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   width: 100%;
   @media all and (max-width: 980px) {
     align-items: start;
@@ -433,7 +432,6 @@ const GuestButtonHidden = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
 `;
 const LeftHidden = styled.div`
   width: 90%;

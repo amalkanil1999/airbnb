@@ -1,9 +1,8 @@
 import React,{useState} from "react";
-import Vectors from "../lists/vectors/Vectors";
+import Vectors from "../vectors/Vectors";
 import styled from "styled-components";
-import Tick from "../../../assets/icons/tick-svgrepo-com.svg"
+import Tick from "../../../../../assets/icons/tick-svgrepo-com.svg"
 import { NavLink } from "react-router-dom";
-import FilterPop from "../popup/FilterPop";
 
 function Main({ toggleFilter }) {
   const [toggled, setToggled] = useState(false);
@@ -25,7 +24,7 @@ function Main({ toggleFilter }) {
             <FilterDiv onClick={toggleFilter}>
               <Filterimg
                 src={
-                  require("../../../assets/icons/filter-horizontal-svgrepo-com.svg")
+                  require("../../../../../assets/icons/filter-horizontal-svgrepo-com.svg")
                     .default
                 }
               />

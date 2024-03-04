@@ -10,7 +10,7 @@ function SignUp(props) {
             <Closebutton onClick={() => props.setTrigger(false)}>
               <Close
                 src={
-                  require("../../../assets/icons/close-square-svgrepo-com.svg")
+                  require("../../../../assets/icons/close-square-svgrepo-com.svg")
                     .default
                 }
               />
