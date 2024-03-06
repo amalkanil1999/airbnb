@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
@@ -15,7 +15,26 @@ import Login from "./components/screens/login/Login";
 import PrivateRoutes from "./components/utils/PrivateRoutes";
 import SignupPage from "./components/screens/signup/SignupPage";
 
+export const UserContext = React.createContext();
+
 function App() {
+  const [userData, setUserData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const updateUserData = (action) =>{
+    switch(action.type){
+      case "LOGIN":
+        setUserData(action.payload);
+        break; 
+      default:
+        break;  
+    }
+}
+  useEffect(() => {
+    const storedUserData = JSON.parse(localStorage.getItem("user_data"));
+    setUserData(storedUserData);
+    setLoading(false);
+  }, []);
+  
   const [showFilter, setShowFilter] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
   const toggleFilter = () => {
@@ -24,8 +43,9 @@ function App() {
   const toggleSignup = () => {
     setOpenSignup(!openSignup);
   };
-  return (
+  return loading? (<div>Loading</div>) : (
     <>
+      <UserContext.Provider value={{userData,updateUserData}}>
       <Router>
         <HeaderTop
           showFilter={showFilter}
@@ -34,10 +54,11 @@ function App() {
           toggleFilter={toggleFilter}
         />
         <Routes>
+        <Route path="/login" element={<Login />} />
           
           <Route element={<PrivateRoutes />} >
           <Route
-            path="/"
+            path="/home"
             element={
               <Cards
                 showFilter={showFilter}
@@ -47,14 +68,15 @@ function App() {
             }
           />
           
-          <Route path="/experiences" element={<Experiances />} />
+              <Route path="/experiences" element={<Experiances />} />
+              <Route path="/signup" element={<SignupPage />} />
           </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignupPage />} />
+          
         </Routes>
       </Router>
       <FilterPop trigger={showFilter} setTrigger={setShowFilter} />
-      <SignUp trigger={openSignup} setTrigger={setOpenSignup}></SignUp>
+        <SignUp trigger={openSignup} setTrigger={setOpenSignup}></SignUp>
+        </UserContext.Provider>
     </>
   );
 }

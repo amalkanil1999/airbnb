@@ -10,6 +10,7 @@ function Main({ toggleFilter }) {
   const handleToggle = () => {
     setToggled(!toggled);
   };
+
   return (
     
     <Wrapper filterPopOpen={filterPopOpen}>

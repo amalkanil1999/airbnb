@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +13,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
-    // Handle form submission logic here
+    
   };
 
   return (

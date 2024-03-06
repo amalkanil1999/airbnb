@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext , useEffect} from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
@@ -6,11 +6,31 @@ import { Helmet } from "react-helmet";
 
 import Popup from "../modals/popup/Popup";
 
+import { UserContext } from "../../../App";
+import axios from "axios";
+import { BASE_URL } from "../../../axiosConfig";
+
 function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const [openPopup, setopenPopup] = useState(false);
   const [checkButtonsVisible, setCheckButtonsVisible] = useState(true);
   const [activeNavItem, setActiveNavItem] = useState("stays");
-
+  const [user,setUser]= useState("")
+  const { userData, updateUserData } = useContext(UserContext);
+  useEffect(() => {
+    if (userData?.access) {
+      axios
+        .get(`${BASE_URL}api/v1/users/profile/`, {
+          headers: {
+            Authorization: `Bearer ${userData?.access}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data);
+          setUser(response.data.data.full_name);
+          console.log(userData)
+        });
+    }
+  }, [userData, updateUserData]);
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);
   };
@@ -18,6 +38,8 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const toggleCheckButtons = () => {
     setCheckButtonsVisible((prev) => !prev);
   };
+
+
   return (
     <BonusWrapper>
       <Helmet>
@@ -76,7 +98,8 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                   />
                 </GlobeIcon>
               </LinkIcon>
-              <SignButton onClick={() => setopenPopup(true)}>
+              {user ? (<Span>{user}</Span>): (<SignButton onClick={() => setopenPopup(true)}>
+                
                 <HamDiv>
                   <Hamburger
                     src={
@@ -95,11 +118,12 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                     alt="user"
                   />
                 </UserDiv>
-              </SignButton>
+              </SignButton>)}
+              
             </Right>
             <Last>
               <SnavLink
-                to="/"
+                to="/home"
                 isActive={activeNavItem === "stays"}
                 onClick={() => handleNavItemClick("stays")}
               >

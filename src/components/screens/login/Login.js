@@ -1,16 +1,54 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect , useContext} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import axios from "axios";
+import { BASE_URL } from "../../../axiosConfig";
+import { UserContext } from "../../../App";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [country, setCountry] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
+  const navigate = useNavigate();
+  const {updateUserData } = useContext(UserContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
+    axios.post(`${BASE_URL}api/v1/users/student/login/`, { country, phone, password })
+      .then((response) => { 
+        let data = response.data;
+        if (data.status_code === 6000) {
+          localStorage.setItem("user_data", JSON.stringify(data.data))
+          updateUserData({ type: "LOGIN",payload: data.data});
+          navigate("/home")
+          console.log("success")
+        }
+        else {
+          console.log(data);
+          const errors = data.data.errors;
+          let errorMessage = "";
+  
+          if (errors) {
+            for (const key in errors) {
+              const errorArray = errors[key];
+              if (Array.isArray(errorArray) && errorArray.length > 0) {
+                errorMessage = `${key}: ${errorArray[0]}`;
+                break;
+              }
+            }
+          } else if (data.message) {
+            errorMessage = data.message;
+          } else {
+            errorMessage = "Unknown error occurred";
+            console.log(data.message)
+          }
+          setMessage(errorMessage);
+        }
+      })
+      .catch((error) => {
+        
+    })
   };
 
   return (
@@ -19,12 +57,20 @@ const Login = () => {
         <LoginHeading>Login to your Account</LoginHeading>
         <LoginInfo>Enter email and password to login</LoginInfo>
         <Form onSubmit={handleSubmit}>
+        <InputContainer>
+            <TextInput
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
+              type="country"
+              placeholder="Country"
+            />
+          </InputContainer>
           <InputContainer>
             <TextInput
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              type="email"
-              placeholder="Email"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              type="number"
+              placeholder="Phone Number"
             />
           </InputContainer>
           <InputContainer>
