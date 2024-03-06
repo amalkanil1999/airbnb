@@ -8,7 +8,7 @@ import Popup from "../modals/popup/Popup";
 
 import { UserContext } from "../../../App";
 import axios from "axios";
-import { BASE_URL } from "../../../axiosConfig";
+import { BASE_URL } from "../../helpers/axiosConfig";
 
 function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const [openPopup, setopenPopup] = useState(false);
@@ -18,7 +18,6 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const { userData, updateUserData } = useContext(UserContext);
 
   useEffect(() => {
-    console.log("User data after update:", userData);
     if (userData?.access) {
       axios
         .get(`${BASE_URL}api/v1/users/profile/`, {
@@ -27,9 +26,7 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
           },
         })
         .then((response) => {
-          console.log(response.data.data);
           setUser(response.data.data.full_name);
-          console.log(userData);
         });
     }
   }, [userData, updateUserData]);
@@ -103,31 +100,36 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                 </GlobeIcon>
               </LinkIcon>
               {userData?.access ? (
-              <SignOut>
-                <Span>{user}</Span>
-                <LogOutButton onClick={handleLogout}>Logout</LogOutButton>
-              </SignOut>
-            )
-            : (
-              <SignButton onClick={() => setopenPopup(true)}>
-                <HamDiv>
-                  <Hamburger
-                    src={require("../../../assets/icons/burger-menu-svgrepo-com.svg").default}
-                    alt="hamburgermenu"
-                  />
-                </HamDiv>
-                <UserDiv>
-                  <UserIcon
-                    src={require("../../../assets/icons/user-circle-svgrepo-com.svg").default}
-                    alt="user"
-                  />
-                </UserDiv>
-              </SignButton>
-            )}
+                <SignOut>
+                  <Span>{user}</Span>
+                  <LogOutButton onClick={handleLogout}>Logout</LogOutButton>
+                </SignOut>
+              ) : (
+                <SignButton onClick={() => setopenPopup(true)}>
+                  <HamDiv>
+                    <Hamburger
+                      src={
+                        require("../../../assets/icons/burger-menu-svgrepo-com.svg")
+                          .default
+                      }
+                      alt="hamburgermenu"
+                    />
+                  </HamDiv>
+                  <UserDiv>
+                    <UserIcon
+                      src={
+                        require("../../../assets/icons/user-circle-svgrepo-com.svg")
+                          .default
+                      }
+                      alt="user"
+                    />
+                  </UserDiv>
+                </SignButton>
+              )}
             </Right>
             <Last>
               <SnavLink
-                to="/home"
+                to="/"
                 isActive={activeNavItem === "stays"}
                 onClick={() => handleNavItemClick("stays")}
               >

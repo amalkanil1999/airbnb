@@ -1,8 +1,8 @@
-import React, { useState, useEffect , useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { BASE_URL } from "../../../axiosConfig";
+import { BASE_URL } from "../../helpers/axiosConfig";
 import { UserContext } from "../../../App";
 
 const Login = () => {
@@ -11,24 +11,26 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const {updateUserData } = useContext(UserContext);
+  const { updateUserData } = useContext(UserContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
-    axios.post(`${BASE_URL}api/v1/users/student/login/`, { country, phone, password })
-      .then((response) => { 
+    axios
+      .post(`${BASE_URL}api/v1/users/student/login/`, {
+        country,
+        phone,
+        password,
+      })
+      .then((response) => {
         let data = response.data;
         if (data.status_code === 6000) {
-          localStorage.setItem("user_data", JSON.stringify(data.data))
-          updateUserData({ type: "LOGIN",payload: data.data});
-          navigate("/home")
-          console.log("success")
-        }
-        else {
-          console.log(data);
+          localStorage.setItem("user_data", JSON.stringify(data.data));
+          updateUserData({ type: "LOGIN", payload: data.data });
+          navigate("/");
+        } else {
           const errors = data.data.errors;
           let errorMessage = "";
-  
+
           if (errors) {
             for (const key in errors) {
               const errorArray = errors[key];
@@ -41,14 +43,12 @@ const Login = () => {
             errorMessage = data.message;
           } else {
             errorMessage = "Unknown error occurred";
-            console.log(data.message)
+            console.log(data.message);
           }
           setMessage(errorMessage);
         }
       })
-      .catch((error) => {
-        
-    })
+      .catch((error) => {});
   };
 
   return (
@@ -57,7 +57,7 @@ const Login = () => {
         <LoginHeading>Login to your Account</LoginHeading>
         <LoginInfo>Enter email and password to login</LoginInfo>
         <Form onSubmit={handleSubmit}>
-        <InputContainer>
+          <InputContainer>
             <TextInput
               onChange={(e) => setCountry(e.target.value)}
               value={country}

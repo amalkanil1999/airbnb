@@ -59,10 +59,10 @@ function App() {
         />
         <Routes>
         <Route path="/login" element={<Login />} />
-          
+        <Route path="/signup" element={<SignupPage />} />
           <Route element={<PrivateRoutes />} >
           <Route
-            path="/home"
+            path="/"
             element={
               <Cards
                 showFilter={showFilter}
@@ -73,7 +73,7 @@ function App() {
           />
           
               <Route path="/experiences" element={<Experiances />} />
-              <Route path="/signup" element={<SignupPage />} />
+              
           </Route>
           
         </Routes>
