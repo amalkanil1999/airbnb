@@ -1,4 +1,4 @@
-import React, { useState, useContext , useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
@@ -14,9 +14,11 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const [openPopup, setopenPopup] = useState(false);
   const [checkButtonsVisible, setCheckButtonsVisible] = useState(true);
   const [activeNavItem, setActiveNavItem] = useState("stays");
-  const [user,setUser]= useState("")
+  const [user, setUser] = useState("");
   const { userData, updateUserData } = useContext(UserContext);
+
   useEffect(() => {
+    console.log("User data after update:", userData);
     if (userData?.access) {
       axios
         .get(`${BASE_URL}api/v1/users/profile/`, {
@@ -27,10 +29,13 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
         .then((response) => {
           console.log(response.data.data);
           setUser(response.data.data.full_name);
-          console.log(userData)
+          console.log(userData);
         });
     }
   }, [userData, updateUserData]);
+  const handleLogout = () => {
+    updateUserData({ type: "LOGOUT" });
+  };
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);
   };
@@ -38,7 +43,6 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const toggleCheckButtons = () => {
     setCheckButtonsVisible((prev) => !prev);
   };
-
 
   return (
     <BonusWrapper>
@@ -98,28 +102,28 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
                   />
                 </GlobeIcon>
               </LinkIcon>
-              {user ? (<Span>{user}</Span>): (<SignButton onClick={() => setopenPopup(true)}>
-                
+              {userData?.access ? (
+              <SignOut>
+                <Span>{user}</Span>
+                <LogOutButton onClick={handleLogout}>Logout</LogOutButton>
+              </SignOut>
+            )
+            : (
+              <SignButton onClick={() => setopenPopup(true)}>
                 <HamDiv>
                   <Hamburger
-                    src={
-                      require("../../../assets/icons/burger-menu-svgrepo-com.svg")
-                        .default
-                    }
+                    src={require("../../../assets/icons/burger-menu-svgrepo-com.svg").default}
                     alt="hamburgermenu"
                   />
                 </HamDiv>
                 <UserDiv>
                   <UserIcon
-                    src={
-                      require("../../../assets/icons/user-circle-svgrepo-com.svg")
-                        .default
-                    }
+                    src={require("../../../assets/icons/user-circle-svgrepo-com.svg").default}
                     alt="user"
                   />
                 </UserDiv>
-              </SignButton>)}
-              
+              </SignButton>
+            )}
             </Right>
             <Last>
               <SnavLink
@@ -274,6 +278,13 @@ const H1container = styled.div`
   @media all and (max-width: 480px) {
     width: 100%;
   }
+`;
+const SignOut = styled.div`
+  display: flex;
+`;
+const LogOutButton = styled.button`
+  padding: 5px;
+  background-color: #e0e0e0;
 `;
 
 const H1 = styled.h1`

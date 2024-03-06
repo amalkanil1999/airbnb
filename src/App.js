@@ -22,6 +22,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const updateUserData = (action) =>{
     switch(action.type){
+      case "LOGOUT":
+        setUserData({});
+        localStorage.clear();
+        break;
       case "LOGIN":
         setUserData(action.payload);
         break; 
