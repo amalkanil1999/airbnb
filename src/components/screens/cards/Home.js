@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import ImageCards from "./_components/Imagecards/ImageCards";
 
-function Cards({ showFilter, toggleFilter, openSignup }) {
+function Home({ showFilter, toggleFilter, openSignup }) {
 
   return (
     
@@ -36,7 +36,7 @@ z-index: 5;
 
   }
   @media all and (max-width: 768px) {
-    top: 71.5px;
+    top: 116.5px;
   }
 `;
 const FlexWrapper = styled.section`
@@ -46,4 +46,4 @@ const FlexWrapper = styled.section`
   
 `;
 
-export default Cards;
+export default Home;

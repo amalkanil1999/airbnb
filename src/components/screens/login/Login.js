@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../helpers/axiosConfig";
 import { UserContext } from "../../../App";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [country, setCountry] = useState("");
@@ -52,7 +53,12 @@ const Login = () => {
   };
 
   return (
+    <LoginC>
+    <Helmet>
+        <title>Login | Airbnb</title>
+      </Helmet>
     <RightContainer>
+      
       <LoginContainer>
         <LoginHeading>Login to your Account</LoginHeading>
         <LoginInfo>Enter email and password to login</LoginInfo>
@@ -88,10 +94,15 @@ const Login = () => {
           </ButtonContainer>
         </Form>
       </LoginContainer>
-    </RightContainer>
+      </RightContainer>
+      </LoginC>
   );
 };
 
+const LoginC = styled.div`
+padding-top:30px;
+ 
+`;
 const RightContainer = styled.div`
   background: #efefef;
   width: 50%;

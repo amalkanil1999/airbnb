@@ -264,7 +264,7 @@ const MainC = styled.nav`
   margin-bottom: 20px;
   width: 100%;
   @media all and (max-width: 768px) {
-    display: none;
+    margin-bottom: 5px;
   }
 `;
 const H1container = styled.div`
@@ -273,16 +273,20 @@ const H1container = styled.div`
     width: 15%;
   }
   @media all and (max-width: 768px) {
-    width: 25%;
+    /* /* width: 25%; */
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
+  }
+  @media all and (max-width: 640px) {
+    width: 28%;
   }
   @media all and (max-width: 480px) {
-    width: 100%;
+    display: none;
   }
 `;
 const SignOut = styled.div`
   display: flex;
+
 `;
 const LogOutButton = styled.button`
   padding: 5px;
@@ -299,7 +303,6 @@ const Middle = styled.div`
   align-items: center;
   width: 40%;
   @media all and (max-width: 980px) {
-    /* width: 51%; */
     display: none;
   }
 `;
@@ -312,6 +315,9 @@ const Last = styled.div`
     width: 100%;
     display: flex;
     margin: 10px 0;
+  }
+  @media all and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -354,7 +360,10 @@ const Right = styled.div`
     width: 33%;
   }
   @media all and (max-width: 768px) {
-    display: none;
+    width: 70%;
+  }
+  @media all and (max-width: 480px) {
+    width: 100%;
   }
 `;
 const Logo = styled.img`

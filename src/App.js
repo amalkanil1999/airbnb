@@ -1,19 +1,10 @@
-import logo from "./logo.svg";
-import React, { useEffect, useState } from "react";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react'
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Experiances from "./components/screens/experiances/Experiances";
-import HeaderTop from "./components/includes/Header/HeaderTop";
-import Cards from "./components/screens/cards/Cards";
-
-import FilterPop from "./components/includes/modals/popup/FilterPop";
-import SignUp from "./components/includes/modals/popup/SignUp";
-import Login from "./components/screens/login/Login";
-import PrivateRoutes from "./components/utils/PrivateRoutes";
-import SignupPage from "./components/screens/signup/SignupPage";
+import HomeStack from "./components/routing/HomeStack"
+import AuthStack from './components/routing/AuthStack';
+import { useState, useEffect } from "react";
 
 export const UserContext = React.createContext();
 
@@ -39,50 +30,16 @@ function App() {
     setLoading(false);
   }, []);
   
-  const [showFilter, setShowFilter] = useState(false);
-  const [openSignup, setOpenSignup] = useState(false);
-  const toggleFilter = () => {
-    setShowFilter(!showFilter);
-  };
-  const toggleSignup = () => {
-    setOpenSignup(!openSignup);
-  };
-  return loading? (<div>Loading</div>) : (
+   return loading? (<div>Loading</div>) : (
     <>
       <UserContext.Provider value={{userData,updateUserData}}>
-      <Router>
-        <HeaderTop
-          showFilter={showFilter}
-          openSignup={openSignup}
-          toggleSignup={toggleSignup}
-          toggleFilter={toggleFilter}
-        />
-        <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignupPage />} />
-          <Route element={<PrivateRoutes />} >
-          <Route
-            path="/"
-            element={
-              <Cards
-                showFilter={showFilter}
-                toggleFilter={toggleFilter}
-                openSignup={openSignup}
-              />
-            }
-          />
-          
-              <Route path="/experiences" element={<Experiances />} />
-              
-          </Route>
-          
-        </Routes>
+    <Router>
+      { userData?.access ? <HomeStack /> : <AuthStack /> }
       </Router>
-      <FilterPop trigger={showFilter} setTrigger={setShowFilter} />
-        <SignUp trigger={openSignup} setTrigger={setOpenSignup}></SignUp>
-        </UserContext.Provider>
+      </UserContext.Provider>
     </>
-  );
+    
+  )
 }
 
-export default App;
+export default App
