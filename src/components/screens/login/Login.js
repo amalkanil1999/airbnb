@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../helpers/axiosConfig";
-import { UserContext } from "../../../App";
+import { StoreContext } from "../../context/Store";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { updateUserData } = useContext(UserContext);
+  const { dispatch } = useContext(StoreContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
@@ -26,7 +26,7 @@ const Login = () => {
         let data = response.data;
         if (data.status_code === 6000) {
           localStorage.setItem("user_data", JSON.stringify(data.data));
-          updateUserData({ type: "LOGIN", payload: data.data });
+          dispatch({ type: "SET_USER_DATA", payload: data.data });
           navigate("/");
         } else {
           const errors = data.data.errors;
@@ -60,8 +60,8 @@ const Login = () => {
     <RightContainer>
       
       <LoginContainer>
-        <LoginHeading>Login to your Account</LoginHeading>
-        <LoginInfo>Enter email and password to login</LoginInfo>
+        <LoginHeading>Login</LoginHeading>
+        <LoginInfo>Enter details to login</LoginInfo>
         <Form onSubmit={handleSubmit}>
           <InputContainer>
             <TextInput
@@ -100,8 +100,9 @@ const Login = () => {
 };
 
 const LoginC = styled.div`
-padding-top:30px;
- 
+padding-top:20px;
+ width: 90%;
+ margin: 0 auto;
 `;
 const RightContainer = styled.div`
   background: #efefef;
@@ -111,7 +112,16 @@ const RightContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  padding: 50px 30px 0px;
+  padding: 30px 30px 0px;
+  @media all and (max-width: 980px) {
+    width: 80%;
+  }
+  @media all and (max-width: 640px) {
+    width: 90%;
+  }
+  @media all and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const LoginContainer = styled.div`
@@ -126,12 +136,20 @@ const LoginHeading = styled.h3`
   font-weight: bold;
   margin-bottom: 20px;
   color: #000;
+  @media all and (max-width: 640px) {
+    font-size: 28px;
+
+  }
 `;
 
 const LoginInfo = styled.p`
   font-size: 18px;
   margin-bottom: 35px;
   color: #000;
+  @media all and (max-width: 640px) {
+    font-size: 17px;
+
+  }
 `;
 
 const Form = styled.form`
@@ -152,6 +170,10 @@ const TextInput = styled.input`
   border-radius: 10px;
   font-size: 18px;
   background-color: #e0e0e0;
+  @media all and (max-width: 640px) {
+    font-size: 17px;
+
+  }
 `;
 
 const LoginButton = styled(NavLink)`
@@ -160,6 +182,9 @@ const LoginButton = styled(NavLink)`
   margin-bottom: 25px;
   color: #046bf6;
   font-size: 20px;
+  @media all and (max-width: 640px) {
+    font-size: 18px;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -167,10 +192,14 @@ const SubmitButton = styled.button`
   border: 0;
   outline: 0;
   color: #fff;
-  padding: 25px 40px;
+  padding: 15px 30px;
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
+  @media all and (max-width: 640px) {
+    font-size: 18px;
+
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -183,6 +212,9 @@ const ErrorMessage = styled.p`
   color: red;
   margin-bottom: 25px;
   text-align: center;
+  @media all and (max-width: 640px) {
+    font-size: 16px;
+  }
 `;
 
 export default Login;

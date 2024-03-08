@@ -1,45 +1,31 @@
-import React from 'react'
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import HomeStack from "./components/routing/HomeStack"
+import './App.css'
+
+import HomeStack from './components/routing/HomeStack';
 import AuthStack from './components/routing/AuthStack';
-import { useState, useEffect } from "react";
-
-export const UserContext = React.createContext();
+import { StoreContext, } from './components/context/Store';
 
 function App() {
-  const [userData, setUserData] = useState({});
-  const [loading, setLoading] = useState(true);
-  const updateUserData = (action) =>{
-    switch(action.type){
-      case "LOGOUT":
-        setUserData({});
-        localStorage.clear();
-        break;
-      case "LOGIN":
-        setUserData(action.payload);
-        break; 
-      default:
-        break;  
-    }
-}
+  const { state, dispatch } = useContext(StoreContext);
+
   useEffect(() => {
-    const storedUserData = JSON.parse(localStorage.getItem("user_data"));
-    setUserData(storedUserData);
-    setLoading(false);
-  }, []);
-  
-   return loading? (<div>Loading</div>) : (
+    const storedUserData = JSON.parse(localStorage.getItem('user_data'));
+    if (storedUserData) {
+      dispatch({ type: 'SET_USER_DATA', payload: storedUserData });
+    } else {
+      dispatch({ type: 'SET_USER_DATA', payload: {} });
+    }
+  }, [dispatch]);
+
+  return (
     <>
-      <UserContext.Provider value={{userData,updateUserData}}>
-    <Router>
-      { userData?.access ? <HomeStack /> : <AuthStack /> }
+      <Router>
+          {state.userData?.access ? <HomeStack /> : <AuthStack />}
       </Router>
-      </UserContext.Provider>
-    </>
-    
-  )
+      </>
+  );
 }
 
-export default App
+export default App;

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 import Popup from "../modals/popup/Popup";
 
-import { UserContext } from "../../../App";
+import { StoreContext } from "../../context/Store"
 import axios from "axios";
 import { BASE_URL } from "../../helpers/axiosConfig";
 
@@ -15,7 +15,10 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
   const [checkButtonsVisible, setCheckButtonsVisible] = useState(true);
   const [activeNavItem, setActiveNavItem] = useState("stays");
   const [user, setUser] = useState("");
-  const { userData, updateUserData } = useContext(UserContext);
+  const { dispatch } = useContext(StoreContext);
+
+
+const { state: { userData } } = useContext(StoreContext);
 
   useEffect(() => {
     if (userData?.access) {
@@ -29,9 +32,9 @@ function HeaderTop({ toggleSignup, toggleFilter, openSignup }) {
           setUser(response.data.data.full_name);
         });
     }
-  }, [userData, updateUserData]);
+  }, [userData, dispatch]);
   const handleLogout = () => {
-    updateUserData({ type: "LOGOUT" });
+    dispatch({ type: "LOGOUT" });
   };
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);
@@ -291,6 +294,8 @@ const SignOut = styled.div`
 const LogOutButton = styled.button`
   padding: 5px;
   background-color: #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
 `;
 
 const H1 = styled.h1`
